@@ -1,0 +1,11 @@
+#! /usr/bin/env ruby
+
+require 'pot_of_coffee'
+
+unless ARGV[0] && ARGV[1]
+  puts 'Please provide the number of cups you want and the strength. Example: `pot_of_coffee 12 normal`'
+  exit 1
+end
+
+pot_of_coffee = PotOfCoffee::Brewer.new(quantity: ARGV[0], strength: ARGV[1])
+puts "Number of scoops needed: #{pot_of_coffee.scoops}"
