@@ -32,6 +32,10 @@ pot_of_coffee = PotOfCoffee::Brewer.new(quantity: 12, strength: 'weak')
 pot_of_coffee.scoops # 6.0
 ```
 
+## Tests
+
+Clone the repo and run `rake test`. The test coverage is *very basic*.
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/pot_of_coffee/fork )
