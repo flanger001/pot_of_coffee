@@ -1,38 +1,42 @@
 require 'pot_of_coffee/version'
+require 'pot_of_coffee/units'
+require 'forwardable'
 
 module PotOfCoffee
+  class Error < StandardError; end;
+  class NegativeNumberError < Error; end
+  class WrongStrengthError < Error; end
+
   class Brewer
-    # Magic numbers omg
-    RATIOS = {
-      weak: 0.5,
-      normal: 0.675,
-      extra: 0.875,
-      turbo: 1,
-      starbucks: 2, # This is really how strong Starbucks expects someone to brew their coffe
-      wtf: 3.8
-    }
+    extend Forwardable
+    attr_reader :strength, :quantity, :units
 
-    attr_reader :ratios, :strength, :quantity
+    def_delegator :@units, :table, :ratios
 
-    def initialize(quantity: 12, strength: :normal)
-      @quantity = quantity.to_i
-      @strength = strength.to_sym
-      @scoops = scoops
+    def initialize(quantity = 12, strength = :normal, units = ImperialUnit.new)
+
+      if quantity < 0
+        raise NegativeNumberError, 'Quantity must be greater than 0'
+      end
+
+      unless ratios.include?(strength.to_sym)
+        raise WrongStrengthError, 'Strength must be strong, normal, or weak'
+      end
+
+      @quantity = quantity
+      @strength = strength
+      @units = units
     end
 
-    def ratios
-      @ratios = RATIOS
-    end
-
-    def self.ratios
-      RATIOS
-    end
-
-    def scoops
+    def amount
       (quantity * ratios.fetch(strength)).round(2)
     rescue KeyError
-      "I don't know how to make '#{strength}' strength coffee, sorry. Available options are #{ratios.keys.join(', ')}"
+      puts "I don't know how to make '#{strength}' strength coffee, sorry. Available options are #{ratios.keys.join(', ')}"
+      exit
     end
 
+    def instructions
+      "To make #{quantity} cups of of #{strength} coffee, use #{amount} #{units.abbreviation} of grounds."
+    end
   end
 end
