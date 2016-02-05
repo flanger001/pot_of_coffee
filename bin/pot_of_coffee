@@ -9,6 +9,7 @@ end
 
 quantity = ARGV[0].to_i
 strength = ARGV[1].to_sym
+units = PotOfCoffee::MetricUnit.new
 
-pot_of_coffee = PotOfCoffee::Brewer.new(quantity, strength)
+pot_of_coffee = PotOfCoffee::Brewer.new(quantity: quantity, strength: strength, units: units)
 puts pot_of_coffee.instructions

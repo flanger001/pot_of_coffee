@@ -1,5 +1,11 @@
 module PotOfCoffee
-  class ImperialUnit
+  class Unit
+    def name; raise NotImplementedError; end
+    def abbreviation; raise NotImplementedError; end
+    def table; raise NotImplementedError; end
+  end
+
+  class ImperialUnit < Unit
     def name
       'tablespoon'
     end
@@ -17,7 +23,7 @@ module PotOfCoffee
     end
   end
 
-  class MetricUnit
+  class MetricUnit < Unit
     def name
       'gram'
     end

@@ -1,42 +1,45 @@
 require 'pot_of_coffee/version'
 require 'pot_of_coffee/units'
+require 'pot_of_coffee/errors'
 require 'forwardable'
 
 module PotOfCoffee
-  class Error < StandardError; end;
-  class NegativeNumberError < Error; end
-  class WrongStrengthError < Error; end
-
   class Brewer
     extend Forwardable
-    attr_reader :strength, :quantity, :units
+    attr_reader :units
 
     def_delegator :@units, :table, :ratios
 
-    def initialize(quantity = 12, strength = :normal, units = ImperialUnit.new)
+    def initialize(args = {})
+      @quantity = args[:quantity] || 12
+      @strength = args[:strength] || :normal
+      @units = args[:units] || ImperialUnit.new
+    end
 
-      if quantity < 0
-        raise NegativeNumberError, 'Quantity must be greater than 0'
+    def quantity
+      if @quantity > 0
+        @quantity
+      else
+        raise NegativeNumberError
       end
+    end
 
-      unless ratios.include?(strength.to_sym)
-        raise WrongStrengthError, 'Strength must be strong, normal, or weak'
+    def strength
+      if ratios.include?(@strength.to_sym)
+        @strength
+      else
+        raise WrongStrengthError
       end
-
-      @quantity = quantity
-      @strength = strength
-      @units = units
     end
 
     def amount
       (quantity * ratios.fetch(strength)).round(2)
-    rescue KeyError
-      puts "I don't know how to make '#{strength}' strength coffee, sorry. Available options are #{ratios.keys.join(', ')}"
-      exit
     end
 
     def instructions
       "To make #{quantity} cups of of #{strength} coffee, use #{amount} #{units.abbreviation} of grounds."
+    rescue NegativeNumberError, WrongStrengthError => e
+      print e.message
     end
   end
 end
