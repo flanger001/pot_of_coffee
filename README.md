@@ -42,7 +42,6 @@ pot_of_coffee.instructions # 'To make 12 cups of normal strength coffee, use 6.0
 pot_of_coffee = PotOfCoffee::Brewer.new(units: PotOfCoffee::MetricUnit.new)
 pot_of_coffee.amount # 63.6
 pot_of_coffee.instructions # 'To make 12 cups of normal strength coffee, use 63.6 g of grounds.'
-
 ```
 
 ## Using your own units
@@ -77,6 +76,7 @@ end
 
 pot_of_coffee = PotOfCoffee::Brewer.new(quantity: 3, strength: :weak, units: CorgeUnit.new)
 pot_of_coffee.amount # 300
+```
 
 ## Tests
 
