@@ -41,7 +41,7 @@ pot_of_coffee.instructions # 'To make 12 cups of normal strength coffee, use 6.0
 
 pot_of_coffee = PotOfCoffee::Brewer.new(units: PotOfCoffee::MetricUnit.new)
 pot_of_coffee.amount # 63.6
-pot_of_coffee.instructions # 'To make 12 cups of normal strength coffee, use 63.6 tbsp.'
+pot_of_coffee.instructions # 'To make 12 cups of normal strength coffee, use 63.6 g.'
 
 ```
 
