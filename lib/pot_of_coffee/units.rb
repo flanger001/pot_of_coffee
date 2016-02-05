@@ -34,9 +34,9 @@ module PotOfCoffee
 
     def table
       {
-        weak: 12,
-        normal: 20,
-        strong: 28,
+        weak: 3,
+        normal: 5.3,
+        strong: 10.6
       }
     end
   end

@@ -4,7 +4,7 @@ require 'whatever_unit'
 class TestUnits < Minitest::Test
   def test_can_use_metric_units
     @pot_of_coffee = PotOfCoffee::Brewer.new(units: PotOfCoffee::MetricUnit.new)
-    assert_equal @pot_of_coffee.instructions, 'To make 12 cups of of normal coffee, use 240.0 g of grounds.'
+    assert_equal @pot_of_coffee.instructions, 'To make 12 cups of of normal coffee, use 63.6 g of grounds.'
   end
 
   def test_can_provide_your_own_units
