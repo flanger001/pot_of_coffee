@@ -12,7 +12,7 @@ module PotOfCoffee
 
     def initialize(args = {})
       @quantity = args[:quantity] || 12
-      @strength = args[:strength].to_sym || :normal
+      @strength = args[:strength] || :normal
       @units = args[:units] || ImperialUnit.new
     end
 
