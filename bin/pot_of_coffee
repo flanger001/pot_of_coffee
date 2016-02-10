@@ -1,15 +1,42 @@
 #! /usr/bin/env ruby
 
+require 'optparse'
 require 'pot_of_coffee'
 
-unless ARGV[0] && ARGV[1]
-  puts 'Please provide the number of cups you want and the strength. Example: `pot_of_coffee 12 normal`'
-  exit 1
-end
+options = {
+  quantity: 12,
+  strength: :normal,
+  units: PotOfCoffee::ImperialUnit.new
+}
 
-quantity = ARGV[0].to_i
-strength = ARGV[1].to_sym
-units = PotOfCoffee::MetricUnit.new
+OptionParser.new do |opts|
+  opts.banner = "Usage: #{File.basename(__FILE__)} [options]"
 
-pot_of_coffee = PotOfCoffee::Brewer.new(quantity: quantity, strength: strength, units: units)
+  opts.on('-q', '--quantity [QUANTITY]', Integer, "Number of cups of coffee you'd like") do |v|
+    options[:quantity] = v
+  end
+
+  opts.on('-s', '--strength [STRENGTH]', String, 'Strength of your coffee (normal, strong, weak)') do |v|
+    options[:strength] = v.to_sym
+  end
+
+  opts.on('-u', '--units [UNITS]', 'Units for your coffee brew (imperial, metric)')  do |v|
+    options[:units] = case v
+      when 'metric'
+        PotOfCoffee::MetricUnit.new
+      when 'imperial'
+        PotOfCoffee::ImperialUnit.new
+      else
+        puts "#{v} is not 'imperial' or 'metric'"
+        exit
+      end
+  end
+
+  opts.on( '-h', '--help', 'Display this screen' ) do
+    puts opts
+    exit
+  end
+end.parse!
+
+pot_of_coffee = PotOfCoffee::Brewer.new(options)
 puts pot_of_coffee.instructions
