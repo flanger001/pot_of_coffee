@@ -25,8 +25,10 @@ Or install it yourself as:
 
 ### CLI
 ```ruby
-pot_of_coffee 12 normal # "To make 12 cups of coffee, use 8.1 tbsp of grounds."
-pot_of_coffee 12 blagg  # "Sorry: coffee strength must be strong, normal, or weak"
+pot_of_coffee # "To make 12 cups of normal coffee, use 8.1 tbsp of grounds."
+pot_of_coffee --strength strong # "To make 12 cups of strong coffee, use 10.5 tbsp of grounds."
+pot_of_coffee --quantity 11 --strength blagg  # "Sorry: coffee strength must be strong, normal, or weak"
+pot_of_coffee --units metric #To make 12 cups of coffee, use 63.6 g of grounds."
 ```
 
 ### Ruby
@@ -35,13 +37,13 @@ require 'pot_of_coffee'
 
 pot_of_coffee = PotOfCoffee::Brewer.new(quantity: 12, strength: 'weak')
 pot_of_coffee.amount # 6.0
-pot_of_coffee.instructions # 'To make 12 cups of normal strength coffee, use 6.0 tbsp of grounds.'
+pot_of_coffee.instructions # 'To make 12 cups of normal coffee, use 6.0 tbsp of grounds.'
 
 # Metric units
 
 pot_of_coffee = PotOfCoffee::Brewer.new(units: PotOfCoffee::MetricUnit.new)
 pot_of_coffee.amount # 63.6
-pot_of_coffee.instructions # 'To make 12 cups of normal strength coffee, use 63.6 g of grounds.'
+pot_of_coffee.instructions # 'To make 12 cups of normal coffee, use 63.6 g of grounds.'
 ```
 
 ## Using your own units
