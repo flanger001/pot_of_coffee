@@ -6,7 +6,7 @@ require 'pot_of_coffee'
 options = {
   quantity: 12,
   strength: :normal,
-  units: PotOfCoffee::ImperialUnit.new
+  units: PotOfCoffee::Units::Imperial.new
 }
 
 OptionParser.new do |opts|
@@ -20,23 +20,23 @@ OptionParser.new do |opts|
     options[:strength] = v.to_sym
   end
 
-  opts.on('-u', '--units [UNITS]', 'Units for your coffee brew (imperial, metric)')  do |v|
+  opts.on('-u', '--units [UNITS]', 'Units for your coffee brew (imperial, metric)') do |v|
     options[:units] = case v
       when 'metric'
-        PotOfCoffee::MetricUnit.new
+        PotOfCoffee::Units::Metric.new
       when 'imperial'
-        PotOfCoffee::ImperialUnit.new
+        PotOfCoffee::Units::Imperial.new
       else
         puts "#{v} is not 'imperial' or 'metric'"
         exit
       end
   end
 
-  opts.on( '-h', '--help', 'Display this screen' ) do
+  opts.on('-h', '--help', 'Display this screen' ) do
     puts opts
     exit
   end
 end.parse!
 
-pot_of_coffee = PotOfCoffee::Brewer.new(options)
+pot_of_coffee = PotOfCoffee::Brewer.new(**options)
 puts pot_of_coffee.instructions
