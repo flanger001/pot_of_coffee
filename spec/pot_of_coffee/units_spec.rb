@@ -11,7 +11,7 @@ RSpec.shared_examples 'a correct unit' do
 
   describe '#table' do
     subject { units.table }
-    it { is_expected.to satisfy { |t| [:weak, :normal, :strong].each { |key| t.keys.include?(key) } } }
+    it { is_expected.to satisfy { |t| [:weak, :medium, :strong].each { |key| t.keys.include?(key) } } }
   end
 end
 

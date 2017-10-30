@@ -25,9 +25,9 @@ Or install it yourself as:
 
 ### CLI
 ```ruby
-pot_of_coffee # "To make 12 cups of normal coffee, use 8.1 tbsp of grounds."
+pot_of_coffee # "To make 12 cups of medium coffee, use 8.1 tbsp of grounds."
 pot_of_coffee --strength strong # "To make 12 cups of strong coffee, use 10.5 tbsp of grounds."
-pot_of_coffee --quantity 11 --strength blagg  # "Sorry: coffee strength must be strong, normal, or weak"
+pot_of_coffee --quantity 11 --strength blagg  # "Sorry: coffee strength must be strong, medium, or mild"
 pot_of_coffee --units metric #To make 12 cups of coffee, use 63.6 g of grounds."
 ```
 
@@ -35,15 +35,15 @@ pot_of_coffee --units metric #To make 12 cups of coffee, use 63.6 g of grounds."
 ```ruby
 require 'pot_of_coffee'
 
-pot_of_coffee = PotOfCoffee::Brewer.new(quantity: 12, strength: 'weak')
+pot_of_coffee = PotOfCoffee::Brewer.new(quantity: 12, strength: 'mild')
 pot_of_coffee.amount # 6.0
-pot_of_coffee.instructions # 'To make 12 cups of normal coffee, use 6.0 tbsp of grounds.'
+pot_of_coffee.instructions # 'To make 12 cups of medium coffee, use 6.0 tbsp of grounds.'
 
 # Metric units
 
-pot_of_coffee = PotOfCoffee::Brewer.new(units: PotOfCoffee::MetricUnit.new)
+pot_of_coffee = PotOfCoffee::Brewer.new(units: PotOfCoffee::Units::Metric.new)
 pot_of_coffee.amount # 63.6
-pot_of_coffee.instructions # 'To make 12 cups of normal coffee, use 63.6 g of grounds.'
+pot_of_coffee.instructions # 'To make 12 cups of medium coffee, use 63.6 g of grounds.'
 ```
 
 ## Using your own units
@@ -52,7 +52,7 @@ Just supply an object that responds to `name`, `abbreviation`, and `table`.
 `name` and `abbreviation` must be strings.
 `name` is not used at the moment, but it may be in the future.
 `table` must be a hash.
-I chose to provide three keys: `:strong`, `:normal`, and `:weak`, but you can use whatever you'd like.
+I chose to provide three keys: `:strong`, `:medium`, and `:mild`, but you can use whatever you'd like.
 
 ### Example
 ```ruby
@@ -70,13 +70,13 @@ class CorgeUnit
   def table
     {
       strong: 3900,
-      normal: 200,
-      weak: 100
+      medium: 200,
+      mild: 100
     }
   end
 end
 
-pot_of_coffee = PotOfCoffee::Brewer.new(quantity: 3, strength: :weak, units: CorgeUnit.new)
+pot_of_coffee = PotOfCoffee::Brewer.new(quantity: 3, strength: :mild, units: CorgeUnit.new)
 pot_of_coffee.amount # 300
 ```
 

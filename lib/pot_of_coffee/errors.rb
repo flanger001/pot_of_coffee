@@ -10,7 +10,7 @@ module PotOfCoffee
 
   class WrongStrengthError < CoffeeError
     def message
-      'Sorry: coffee strength must be strong, normal, or weak'
+      'Sorry: coffee strength must be strong, medium, or mild'
     end
   end
 end

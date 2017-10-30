@@ -3,9 +3,9 @@ RSpec.describe PotOfCoffee::Brewer do
     let(:pot_of_coffee) { PotOfCoffee::Brewer.new }
 
     it 'has correct properties and gives instructions' do
-      expect(pot_of_coffee.instructions).to eq('To make 12 cups of of normal coffee, use 8.1 tbsp of grounds.')
+      expect(pot_of_coffee.instructions).to eq("Cups desired: 12\nBrew strength: medium\nGrounds needed: 8.1 tbsp\n")
       expect(pot_of_coffee.quantity).to eq(12)
-      expect(pot_of_coffee.strength).to eq(:normal)
+      expect(pot_of_coffee.strength).to eq(:medium)
     end
   end
 
@@ -35,17 +35,16 @@ RSpec.describe PotOfCoffee::Brewer do
       def table
         {
           strong: 109109,
-          normal: 279.10,
-          weak: 100
+          medium: 279.10,
+          mild: 100
         }
       end
     end
 
-    let(:units) { WhateverUnit.new }
-    let(:pot_of_coffee) { PotOfCoffee::Brewer.new(units: units) }
+    let(:pot_of_coffee) { PotOfCoffee::Brewer.new(units: WhateverUnit.new) }
 
     it 'can provide your own units' do
-      expect(pot_of_coffee.instructions).to eq('To make 12 cups of of normal coffee, use 3349.2 gb of grounds.')
+      expect(pot_of_coffee.instructions).to eq("Cups desired: 12\nBrew strength: medium\nGrounds needed: 3349.2 gb\n")
     end
   end
 end
