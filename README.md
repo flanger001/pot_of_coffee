@@ -24,11 +24,25 @@ Or install it yourself as:
 ## Usage
 
 ### CLI
-```ruby
-pot_of_coffee # "To make 12 cups of medium coffee, use 8.1 tbsp of grounds."
-pot_of_coffee --strength strong # "To make 12 cups of strong coffee, use 10.5 tbsp of grounds."
-pot_of_coffee --quantity 11 --strength blagg  # "Sorry: coffee strength must be strong, medium, or mild"
-pot_of_coffee --units metric #To make 12 cups of coffee, use 63.6 g of grounds."
+```bash
+$ pot_of_coffee
+Cups desired: 12
+Brew strength: medium
+Grounds needed: 8.1 tbsp
+
+$ pot_of_coffee --strength=strong
+Cups desired: 12
+Brew strength: strong
+Grounds needed: 10.5 tbsp
+
+$ pot_of_coffee --strength=blagg
+Sorry: coffee strength must be strong, medium, or mild
+
+$ pot_of_coffee --units=metric
+Cups desired: 12
+Brew strength: medium
+Grounds needed: 63.6 g
+
 ```
 
 ### Ruby
@@ -37,13 +51,20 @@ require 'pot_of_coffee'
 
 pot_of_coffee = PotOfCoffee::Brewer.new(quantity: 12, strength: 'mild')
 pot_of_coffee.amount # 6.0
-pot_of_coffee.instructions # 'To make 12 cups of medium coffee, use 6.0 tbsp of grounds.'
+pot_of_coffee.instructions
+#=> Cups desired: 12
+#=> Brew strength: mild
+#=> Grounds needed: 6.0 tbsp
+
 
 # Metric units
 
 pot_of_coffee = PotOfCoffee::Brewer.new(units: PotOfCoffee::Units::Metric.new)
 pot_of_coffee.amount # 63.6
-pot_of_coffee.instructions # 'To make 12 cups of medium coffee, use 63.6 g of grounds.'
+pot_of_coffee.instructions
+#=> Cups desired: 12
+#=> Brew strength: medium
+#=> Grounds needed: 63.6 g
 ```
 
 ## Using your own units
@@ -82,7 +103,9 @@ pot_of_coffee.amount # 300
 
 ## Tests
 
-Clone the repo and run `rake test`.
+* Fork/clone the repo
+* `bundle install`
+* `bundle exec rspec`
 
 ## Contributing
 
