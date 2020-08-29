@@ -14,6 +14,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://daveshaffer.co/coffee"
   spec.license       = "MIT"
 
+  spec.required_ruby_version = ">= 2.6.0"
+
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = ["pot_of_coffee"]
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
