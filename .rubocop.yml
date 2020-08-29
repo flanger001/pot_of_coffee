@@ -21,6 +21,9 @@ Style/FrozenStringLiteralComment:
   Exclude:
     - "bin/**/*"
 
+Style/SignalException:
+  EnforcedStyle: semantic
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
   ConsistentQuotesInMultiline: true
