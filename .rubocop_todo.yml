@@ -15,11 +15,6 @@ Layout/EndAlignment:
     - 'bin/pot_of_coffee'
 
 # Offense count: 1
-Lint/AmbiguousBlockAssociation:
-  Exclude:
-    - 'spec/pot_of_coffee/units_spec.rb'
-
-# Offense count: 1
 # Cop supports --auto-correct.
 Style/ExpandPathArguments:
   Exclude:
