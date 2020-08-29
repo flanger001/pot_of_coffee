@@ -27,15 +27,6 @@ Style/NumericLiterals:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: AutoCorrect, EnforcedStyle, IgnoredMethods.
-# SupportedStyles: predicate, comparison
-Style/NumericPredicate:
-  Exclude:
-    - 'spec/**/*'
-    - 'lib/pot_of_coffee/brewer.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 # Configuration parameters: MinSize.
 # SupportedStyles: percent, brackets
 Style/SymbolArray:

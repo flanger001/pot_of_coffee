@@ -21,6 +21,9 @@ Style/FrozenStringLiteralComment:
   Exclude:
     - "bin/**/*"
 
+Style/NumericPredicate:
+  EnforcedStyle: predicate
+
 Style/SignalException:
   EnforcedStyle: semantic
 
