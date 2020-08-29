@@ -30,6 +30,9 @@ Style/IfUnlessModifier:
   Exclude:
     - "spec/spec_helper.rb"
 
+Style/NumericLiterals:
+  MinDigits: 7
+
 Style/NumericPredicate:
   EnforcedStyle: predicate
 
