@@ -1,5 +1,3 @@
-inherit_from: .rubocop_todo.yml
-
 AllCops:
   DisabledByDefault: true
   TargetRubyVersion: 2.6
@@ -25,6 +23,9 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: always
   Exclude:
     - "bin/**/*"
+
+Style/HashSyntax:
+  EnforcedStyle: no_mixed_keys
 
 Style/IfUnlessModifier:
   Exclude:
