@@ -10,6 +10,11 @@ Layout/EndAlignment:
 Lint/AmbiguousBlockAssociation:
   Enabled: true
 
+Layout/LineLength:
+  Max: 160
+  Exclude:
+    - "pot_of_coffee.gemspec"
+
 Style/Documentation:
   Enabled: false
 
