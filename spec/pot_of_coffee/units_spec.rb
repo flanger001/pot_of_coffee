@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'a correct unit' do
   describe '#name' do
     subject { units.name }

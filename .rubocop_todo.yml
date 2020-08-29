@@ -32,43 +32,11 @@ Lint/AmbiguousBlockAssociation:
   Exclude:
     - 'spec/pot_of_coffee/units_spec.rb'
 
-# Offense count: 6
-Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'lib/pot_of_coffee.rb'
-    - 'lib/pot_of_coffee/brewer.rb'
-    - 'lib/pot_of_coffee/errors.rb'
-    - 'lib/pot_of_coffee/units.rb'
-    - 'lib/pot_of_coffee/units/unit.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/ExpandPathArguments:
   Exclude:
     - 'pot_of_coffee.gemspec'
-
-# Offense count: 14
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, always_true, never
-Style/FrozenStringLiteralComment:
-  Exclude:
-    - 'Gemfile'
-    - 'Rakefile'
-    - 'bin/console'
-    - 'bin/pot_of_coffee'
-    - 'lib/pot_of_coffee.rb'
-    - 'lib/pot_of_coffee/brewer.rb'
-    - 'lib/pot_of_coffee/errors.rb'
-    - 'lib/pot_of_coffee/units.rb'
-    - 'lib/pot_of_coffee/units/unit.rb'
-    - 'lib/pot_of_coffee/version.rb'
-    - 'pot_of_coffee.gemspec'
-    - 'spec/pot_of_coffee/brewer_spec.rb'
-    - 'spec/pot_of_coffee/units_spec.rb'
-    - 'spec/spec_helper.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -82,14 +50,6 @@ Style/HashSyntax:
 Style/IfUnlessModifier:
   Exclude:
     - 'spec/spec_helper.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: literals, strict
-Style/MutableConstant:
-  Exclude:
-    - 'lib/pot_of_coffee/version.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.

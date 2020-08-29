@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe PotOfCoffee::Brewer do
   context 'with no arguments' do
     let(:pot_of_coffee) { PotOfCoffee::Brewer.new }

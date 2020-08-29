@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PotOfCoffee
   class Brewer
     attr_reader :units, :quantity, :strength
