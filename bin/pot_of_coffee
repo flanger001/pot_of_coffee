@@ -29,7 +29,7 @@ OptionParser.new do |opts|
                       else
                         puts "#{v} is not 'imperial' or 'metric'"
                         exit
-      end
+                      end
   end
 
   opts.on("-h", "--help", "Display this screen") do
