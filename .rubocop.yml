@@ -26,6 +26,10 @@ Style/FrozenStringLiteralComment:
   Exclude:
     - "bin/**/*"
 
+Style/IfUnlessModifier:
+  Exclude:
+    - "spec/spec_helper.rb"
+
 Style/NumericPredicate:
   EnforcedStyle: predicate
 
