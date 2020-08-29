@@ -10,6 +10,9 @@ Lint/AmbiguousBlockAssociation:
 Style/Documentation:
   Enabled: false
 
+Style/ExpandPathArguments:
+  Enabled: true
+
 Style/FrozenStringLiteralComment:
   EnforcedStyle: always
   Exclude:
