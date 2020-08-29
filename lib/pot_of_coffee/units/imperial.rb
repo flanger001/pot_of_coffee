@@ -4,11 +4,11 @@ module PotOfCoffee
   module Units
     class Imperial
       def name
-        'tablespoon'
+        "tablespoon"
       end
 
       def abbreviation
-        'tbsp'
+        "tbsp"
       end
 
       def table

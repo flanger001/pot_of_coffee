@@ -6,13 +6,13 @@ module PotOfCoffee
 
   class NegativeNumberError < CoffeeError
     def message
-      'Sorry: coffee quantity must be greater than 0'
+      "Sorry: coffee quantity must be greater than 0"
     end
   end
 
   class WrongStrengthError < CoffeeError
     def message
-      'Sorry: coffee strength must be strong, medium, or mild'
+      "Sorry: coffee strength must be strong, medium, or mild"
     end
   end
 end

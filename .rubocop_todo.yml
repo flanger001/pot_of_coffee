@@ -74,19 +74,6 @@ Style/SignalException:
   Exclude:
     - 'lib/pot_of_coffee/brewer.rb'
 
-# Offense count: 30
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Exclude:
-    - 'lib/pot_of_coffee.rb'
-    - 'lib/pot_of_coffee/units.rb'
-    - 'lib/pot_of_coffee/version.rb'
-    - 'pot_of_coffee.gemspec'
-    - 'spec/pot_of_coffee/brewer_spec.rb'
-    - 'spec/spec_helper.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: MinSize.

@@ -4,11 +4,11 @@ module PotOfCoffee
   module Units
     class Metric
       def name
-        'gram'
+        "gram"
       end
 
       def abbreviation
-        'g'
+        "g"
       end
 
       def table

@@ -10,3 +10,7 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: always
   Exclude:
     - "bin/**/*"
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  ConsistentQuotesInMultiline: true
