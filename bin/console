@@ -1,6 +1,7 @@
 #! /usr/bin/env ruby
 
 require "pry"
+require "bundler/setup"
 require "pot_of_coffee"
 
 Pry.start
