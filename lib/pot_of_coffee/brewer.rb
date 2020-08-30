@@ -5,8 +5,8 @@ module PotOfCoffee
     attr_reader :units, :quantity, :strength
 
     def initialize(quantity: 12, strength: :medium, units: Units::Imperial.new)
-      fail NegativeNumberError unless quantity.positive?
-      fail WrongStrengthError unless units.table.keys.include?(strength)
+      fail Errors::NegativeNumber unless quantity.positive?
+      fail Errors::WrongStrength unless units.table.keys.include?(strength)
 
       @quantity = quantity
       @strength = strength

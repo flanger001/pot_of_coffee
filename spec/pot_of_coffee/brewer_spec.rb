@@ -12,14 +12,14 @@ RSpec.describe PotOfCoffee::Brewer do
   end
 
   context "with invalid quantity" do
-    it "raises PotOfCoffee::NegativeNumberError" do
-      expect { PotOfCoffee::Brewer.new(quantity: -1) }.to raise_error(PotOfCoffee::NegativeNumberError)
+    it "raises PotOfCoffee::Errors::NegativeNumber" do
+      expect { PotOfCoffee::Brewer.new(quantity: -1) }.to raise_error(PotOfCoffee::Errors::NegativeNumber)
     end
   end
 
   context "with invalid strength" do
-    it "raises PotOfCoffee::WrongStrengthError" do
-      expect { PotOfCoffee::Brewer.new(strength: :ultra) }.to raise_error(PotOfCoffee::WrongStrengthError)
+    it "raises PotOfCoffee::Errors::WrongStrength" do
+      expect { PotOfCoffee::Brewer.new(strength: :ultra) }.to raise_error(PotOfCoffee::Errors::WrongStrength)
     end
   end
 
