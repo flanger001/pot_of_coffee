@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require "pot_of_coffee/brewer"
-require "pot_of_coffee/version"
-require "pot_of_coffee/units"
-require "pot_of_coffee/errors"
-
 module PotOfCoffee
-
+  autoload :Brewer, "pot_of_coffee/brewer"
+  autoload :Version, "pot_of_coffee/version"
+  autoload :Units, "pot_of_coffee/units"
+  autoload :Errors, "pot_of_coffee/errors"
 end
