@@ -1,4 +1,6 @@
-require 'pot_of_coffee'
+# frozen_string_literal: true
+
+require "pot_of_coffee"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

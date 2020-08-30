@@ -15,6 +15,7 @@ jobs:
       - run:
           name: Which bundler?
           command: bundle -v
+      - ruby/rubocop-check
       - ruby/rspec-test
       - slack/status
 workflows:

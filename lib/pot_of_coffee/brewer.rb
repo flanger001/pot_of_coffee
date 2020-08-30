@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module PotOfCoffee
   class Brewer
     attr_reader :units, :quantity, :strength
 
-    def initialize(quantity: 12, strength: :medium, units: Units::Imperial.new)
-      fail NegativeNumberError unless quantity > 0
-      fail WrongStrengthError unless units.table.keys.include?(strength)
+    def initialize(quantity: 12, strength: :medium, units: Units::Imperial)
+      fail Errors::NegativeNumber unless quantity.positive?
+      fail Errors::WrongStrength unless units.table.keys.include?(strength)
 
       @quantity = quantity
       @strength = strength

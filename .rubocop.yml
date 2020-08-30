@@ -1,0 +1,48 @@
+AllCops:
+  DisabledByDefault: true
+  TargetRubyVersion: 2.6
+
+Layout/EndAlignment:
+  Enabled: true
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: true
+
+Layout/LineLength:
+  Max: 160
+  Exclude:
+    - "pot_of_coffee.gemspec"
+
+Style/Documentation:
+  Enabled: false
+
+Style/ExpandPathArguments:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+  Exclude:
+    - "bin/**/*"
+
+Style/HashSyntax:
+  EnforcedStyle: no_mixed_keys
+
+Style/IfUnlessModifier:
+  Exclude:
+    - "spec/spec_helper.rb"
+
+Style/NumericLiterals:
+  MinDigits: 7
+
+Style/NumericPredicate:
+  EnforcedStyle: predicate
+
+Style/SignalException:
+  EnforcedStyle: semantic
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  ConsistentQuotesInMultiline: true
+
+Style/SymbolArray:
+  EnforcedStyle: percent

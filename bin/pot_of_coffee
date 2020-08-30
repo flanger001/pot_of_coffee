@@ -1,38 +1,38 @@
 #! /usr/bin/env ruby
 
-require 'optparse'
-require 'pot_of_coffee'
+require "optparse"
+require "pot_of_coffee"
 
 options = {
   quantity: 12,
   strength: :medium,
-  units: PotOfCoffee::Units::Imperial.new
+  units: PotOfCoffee::Units::Imperial
 }
 
 OptionParser.new do |opts|
   opts.banner = "Usage: #{File.basename(__FILE__)} [options]"
 
-  opts.on('-q', '--quantity [QUANTITY]', Integer, "Number of cups of coffee you'd like") do |v|
+  opts.on("-q", "--quantity [QUANTITY]", Integer, "Number of cups of coffee you'd like") do |v|
     options[:quantity] = v
   end
 
-  opts.on('-s', '--strength [STRENGTH]', String, 'Strength of your coffee (medium, strong, mild)') do |v|
+  opts.on("-s", "--strength [STRENGTH]", String, "Strength of your coffee (medium, strong, mild)") do |v|
     options[:strength] = v.to_sym
   end
 
-  opts.on('-u', '--units [UNITS]', 'Units for your coffee brew (imperial, metric)') do |v|
+  opts.on("-u", "--units [UNITS]", "Units for your coffee brew (imperial, metric)") do |v|
     options[:units] = case v
-                      when 'metric'
-                        PotOfCoffee::Units::Metric.new
-                      when 'imperial'
-                        PotOfCoffee::Units::Imperial.new
+                      when "metric"
+                        PotOfCoffee::Units::Metric
+                      when "imperial"
+                        PotOfCoffee::Units::Imperial
                       else
                         puts "#{v} is not 'imperial' or 'metric'"
                         exit
-      end
+                      end
   end
 
-  opts.on('-h', '--help', 'Display this screen') do
+  opts.on("-h", "--help", "Display this screen") do
     puts opts
     exit
   end
