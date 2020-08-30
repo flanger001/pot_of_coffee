@@ -18,14 +18,14 @@ RSpec.shared_examples "a correct unit" do
 end
 
 RSpec.describe PotOfCoffee::Units do
-  describe "imperial units" do
-    let(:units) { PotOfCoffee::Units::Imperial.new }
+  describe "Imperial" do
+    let(:units) { PotOfCoffee::Units::Imperial }
 
     it_behaves_like "a correct unit"
   end
 
-  describe "metric units" do
-    let(:units) { PotOfCoffee::Units::Metric.new }
+  describe "Metric" do
+    let(:units) { PotOfCoffee::Units::Metric }
 
     it_behaves_like "a correct unit"
   end

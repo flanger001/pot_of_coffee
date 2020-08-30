@@ -25,25 +25,12 @@ RSpec.describe PotOfCoffee::Brewer do
 
 
   context "with own units" do
-    class WhateverUnit
-      def name
-        "grably"
-      end
+    let(:pot_of_coffee) { PotOfCoffee::Brewer.new(units: Whatever) }
 
-      def abbreviation
-        "gb"
-      end
-
-      def table
-        {
-          strong: 109109,
-          medium: 279.10,
-          mild: 100
-        }
-      end
+    before do
+      whatever = PotOfCoffee::Units::Unit.new("grably", "gb", { strong: 109109, medium: 279.10, mild: 100 })
+      stub_const("Whatever", whatever)
     end
-
-    let(:pot_of_coffee) { PotOfCoffee::Brewer.new(units: WhateverUnit.new) }
 
     it "can provide your own units" do
       expect(pot_of_coffee.instructions).to eq("Cups desired: 12\nBrew strength: medium\nGrounds needed: 3349.2 gb\n")

@@ -4,13 +4,14 @@ This is a command line coffee brew calculator.
 Enter the number of cups you want and the strength.
 It can also be used in your own code, and you can supply your own units for grounds if you don't want to use tablespoons.
 I use it to maintain intra-office harmony.
+Imperial and metric units are provided.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'pot_of_coffee'
+gem "pot_of_coffee"
 ```
 
 And then execute:
@@ -24,6 +25,7 @@ Or install it yourself as:
 ## Usage
 
 ### CLI
+
 ```bash
 $ pot_of_coffee
 Cups desired: 12
@@ -46,10 +48,11 @@ Grounds needed: 63.6 g
 ```
 
 ### Ruby
-```ruby
-require 'pot_of_coffee'
 
-pot_of_coffee = PotOfCoffee::Brewer.new(quantity: 12, strength: 'mild')
+```ruby
+require "pot_of_coffee"
+
+pot_of_coffee = PotOfCoffee::Brewer.new(quantity: 12, strength: "mild")
 pot_of_coffee.amount # 6.0
 pot_of_coffee.instructions
 #=> Cups desired: 12
@@ -59,7 +62,7 @@ pot_of_coffee.instructions
 
 # Metric units
 
-pot_of_coffee = PotOfCoffee::Brewer.new(units: PotOfCoffee::Units::Metric.new)
+pot_of_coffee = PotOfCoffee::Brewer.new(units: PotOfCoffee::Units::Metric)
 pot_of_coffee.amount # 63.6
 pot_of_coffee.instructions
 #=> Cups desired: 12
@@ -68,7 +71,7 @@ pot_of_coffee.instructions
 ```
 
 ## Using your own units
-If you want to use a different set of units or different ratios, you can do so quite simply.
+You can use a different set of units or different ratios if you want.
 Just supply an object that responds to `name`, `abbreviation`, and `table`.
 `name` and `abbreviation` must be strings.
 `name` is not used at the moment, but it may be in the future.
@@ -76,16 +79,17 @@ Just supply an object that responds to `name`, `abbreviation`, and `table`.
 I chose to provide three keys: `:strong`, `:medium`, and `:mild`, but you can use whatever you'd like.
 
 ### Example
+
 ```ruby
-require 'pot_of_coffee'
+require "pot_of_coffee"
 
 class CorgeUnit
   def name
-    'corge'
+    "corge"
   end
 
   def abbreviation
-    'cg'
+    "cg"
   end
 
   def table
@@ -101,16 +105,26 @@ pot_of_coffee = PotOfCoffee::Brewer.new(quantity: 3, strength: :mild, units: Cor
 pot_of_coffee.amount # 300
 ```
 
+The same example can be accomplished easily by making new instance of `PotOfCoffee::Units::Unit`:
+
+```ruby
+corge = PotOfCoffee::Units::Unit.new("corge", "cg", { strong: 3900, medium: 200, mild: 100 })
+pot_of_coffee = PotOfCoffee::Brewer.new(quantity: 3, strength: :mild, units: corge)
+pot_of_coffee.amount # 300
+```
+
+
 ## Tests
 
 * Fork/clone the repo
 * `bundle install`
 * `bundle exec rspec`
+* `bundle exec rubocop`
 
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/pot_of_coffee/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
+3. Commit your changes (`git commit -am "Add some feature"`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request

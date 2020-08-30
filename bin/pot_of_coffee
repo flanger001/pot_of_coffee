@@ -6,7 +6,7 @@ require "pot_of_coffee"
 options = {
   quantity: 12,
   strength: :medium,
-  units: PotOfCoffee::Units::Imperial.new
+  units: PotOfCoffee::Units::Imperial
 }
 
 OptionParser.new do |opts|
@@ -23,9 +23,9 @@ OptionParser.new do |opts|
   opts.on("-u", "--units [UNITS]", "Units for your coffee brew (imperial, metric)") do |v|
     options[:units] = case v
                       when "metric"
-                        PotOfCoffee::Units::Metric.new
+                        PotOfCoffee::Units::Metric
                       when "imperial"
-                        PotOfCoffee::Units::Imperial.new
+                        PotOfCoffee::Units::Imperial
                       else
                         puts "#{v} is not 'imperial' or 'metric'"
                         exit
