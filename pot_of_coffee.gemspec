@@ -11,10 +11,10 @@ Gem::Specification.new do |spec|
   spec.email         = ["dave.shaffer@gmail.com"]
   spec.summary       = "Coffee brew strength calculator"
   spec.description   = "This is a small CLI app for calculating the brew strength for an automatic drip coffee maker. It can help keep coffee brews consistent."
-  spec.homepage      = "http://daveshaffer.co/coffee"
+  spec.homepage      = "https://github.com/flanger001/pot_of_coffee"
   spec.license       = "MIT"
 
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 2.7.0"
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = ["pot_of_coffee"]
